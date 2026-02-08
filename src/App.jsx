@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const concepts = [
     {
@@ -194,6 +194,24 @@ export default function PayCoreLogoShowcase() {
     const [selected, setSelected] = useState(null);
     const [fullscreen, setFullscreen] = useState(null);
 
+    // Keyboard navigation
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (!fullscreen) return;
+            if (e.key === "ArrowRight") {
+                const next = concepts.find(c => c.id === (fullscreen.id === 10 ? 1 : fullscreen.id + 1));
+                setFullscreen(next);
+            } else if (e.key === "ArrowLeft") {
+                const prev = concepts.find(c => c.id === (fullscreen.id === 1 ? 10 : fullscreen.id - 1));
+                setFullscreen(prev);
+            } else if (e.key === "Escape") {
+                setFullscreen(null);
+            }
+        };
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [fullscreen]);
+
     const handleDownload = (e, imgPath, fileName) => {
         e.stopPropagation();
         const link = document.createElement("a");
@@ -215,6 +233,10 @@ export default function PayCoreLogoShowcase() {
                 @keyframes blink {
                     0%, 50% { opacity: 1; }
                     51%, 100% { opacity: 0; }
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: scale(0.95); }
+                    to { opacity: 1; transform: scale(1); }
                 }
             `}</style>
 
@@ -313,15 +335,70 @@ export default function PayCoreLogoShowcase() {
                         <span>{fullscreen.name.split(" — ")[1]}</span>
                     </div>
 
+                    {/* Navigation Buttons */}
+                    <button
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            const prev = concepts.find(c => c.id === (fullscreen.id === 1 ? concepts.length : fullscreen.id - 1));
+                            setFullscreen(prev);
+                        }}
+                        style={{
+                            position: "absolute",
+                            left: "20px",
+                            background: "rgba(255,255,255,0.1)",
+                            border: "none",
+                            color: "#FFFFFF",
+                            width: "50px", height: "50px",
+                            borderRadius: "50%",
+                            cursor: "pointer",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            transition: "all 0.2s"
+                        }}
+                        onMouseEnter={(e) => e.target.style.background = "rgba(255,255,255,0.2)"}
+                        onMouseLeave={(e) => e.target.style.background = "rgba(255,255,255,0.1)"}
+                    >
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+
+                    <button
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            const next = concepts.find(c => c.id === (fullscreen.id === concepts.length ? 1 : fullscreen.id + 1));
+                            setFullscreen(next);
+                        }}
+                        style={{
+                            position: "absolute",
+                            right: "20px",
+                            background: "rgba(255,255,255,0.1)",
+                            border: "none",
+                            color: "#FFFFFF",
+                            width: "50px", height: "50px",
+                            borderRadius: "50%",
+                            cursor: "pointer",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            transition: "all 0.2s"
+                        }}
+                        onMouseEnter={(e) => e.target.style.background = "rgba(255,255,255,0.2)"}
+                        onMouseLeave={(e) => e.target.style.background = "rgba(255,255,255,0.1)"}
+                    >
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+
                     <img
+                        key={fullscreen.id}
                         src={fullscreen.image}
                         alt={fullscreen.name}
                         style={{
-                            maxWidth: "90%",
-                            maxHeight: "80%",
+                            maxWidth: "85%",
+                            maxHeight: "75%",
                             objectFit: "contain",
                             borderRadius: "12px",
-                            boxShadow: "0 20px 50px rgba(0,0,0,0.5)"
+                            boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
+                            animation: "fadeIn 0.3s ease-out"
                         }}
                     />
 
