@@ -273,9 +273,14 @@ export default function PayCoreLogoShowcase() {
                             }}
                         >
                             <div style={{
-                                position: "absolute", top: "12px", left: "16px",
-                                fontSize: "10px", fontWeight: 700, color: c.bg === "#FFFFFF" || c.bg === "#F8FAFC" || c.bg === "#F1F5F9" ? "#CBD5E1" : "rgba(255,255,255,0.2)",
-                                letterSpacing: "1px"
+                                position: "absolute", top: "16px", left: "20px",
+                                fontSize: "12px", fontWeight: 800,
+                                color: c.bg === "#FFFFFF" || c.bg === "#F8FAFC" || c.bg === "#F1F5F9" ? "#3B82F6" : "#FFFFFF",
+                                background: c.bg === "#FFFFFF" || c.bg === "#F8FAFC" || c.bg === "#F1F5F9" ? "rgba(59, 130, 246, 0.1)" : "rgba(255,255,255,0.15)",
+                                padding: "4px 10px",
+                                borderRadius: "8px",
+                                letterSpacing: "1px",
+                                fontFamily: "'Courier New', monospace"
                             }}>
                                 {String(c.id).padStart(2, "0")}
                             </div>
