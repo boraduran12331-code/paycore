@@ -97,96 +97,73 @@ const concepts = [
     },
     {
         id: 6,
-        name: "Konsept 6 — Slash Divider",
-        desc: "Eğik çizgi ayracı ile enerjik ve hızlı his veren tasarım.",
+        name: "Konsept 6 — Chip Minimal Flat",
+        desc: "Yeni çip ikonu ile modern ve yalın tasarım.",
         bg: "#FFFFFF",
-        image: "/gorseller/06_slash_divider.png",
+        image: "/gorseller/11_chip_minimal_flat.png",
         render: () => (
-            <div style={{ display: "flex", alignItems: "center", gap: "0px", fontFamily: "'Segoe UI', sans-serif" }}>
-                <span style={{ fontSize: "44px", fontWeight: 700, color: "#1E293B", letterSpacing: "-1px" }}>Pay</span>
-                <span style={{ fontSize: "48px", fontWeight: 200, color: "#3B82F6", margin: "0 2px" }}>/</span>
-                <span style={{ fontSize: "44px", fontWeight: 700, color: "#1E293B", letterSpacing: "-1px" }}>Core</span>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "'Segoe UI', sans-serif" }}>
+                <div style={{ width: "40px", height: "40px", borderRadius: "8px", background: "#3B82F6" }} />
+                <span style={{ fontSize: "32px", fontWeight: 700, color: "#0F172A" }}>PayCore</span>
             </div>
         ),
-        tagline: () => (
-            <span style={{ fontFamily: "'Segoe UI', sans-serif", fontSize: "13px", fontWeight: 500, color: "#94A3B8", letterSpacing: "3px", textTransform: "uppercase", marginTop: "6px" }}>fast havale</span>
-        )
+        tagline: () => <span style={{ color: "#94A3B8", fontSize: "12px" }}>Geleceğin Ödeme Noktası</span>
     },
     {
         id: 7,
-        name: "Konsept 7 — Bracket Frame",
-        desc: "Köşeli parantezler ile 'core' vurgusu. Teknoloji + güvenlik hissi.",
-        bg: "#F1F5F9",
-        image: "/gorseller/07_bracket_tech.png",
+        name: "Konsept 7 — Chip Dark Bold",
+        desc: "Koyu temalı, güçlü teknolojik duruş.",
+        bg: "#0A0A0A",
+        image: "/gorseller/12_chip_dark_bold.png",
         render: () => (
-            <div style={{ display: "flex", alignItems: "center", gap: "0px", fontFamily: "'Courier New', monospace" }}>
-                <span style={{ fontSize: "40px", fontWeight: 700, color: "#1E293B", letterSpacing: "-1px" }}>pay</span>
-                <span style={{ fontSize: "40px", fontWeight: 300, color: "#3B82F6" }}>[</span>
-                <span style={{ fontSize: "40px", fontWeight: 700, color: "#3B82F6", letterSpacing: "-1px" }}>core</span>
-                <span style={{ fontSize: "40px", fontWeight: 300, color: "#3B82F6" }}>]</span>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "'Segoe UI', sans-serif" }}>
+                <div style={{ width: "40px", height: "40px", borderRadius: "8px", background: "#FFFFFF" }} />
+                <span style={{ fontSize: "32px", fontWeight: 800, color: "#FFFFFF" }}>PAYCORE</span>
             </div>
         ),
-        tagline: () => (
-            <span style={{ fontFamily: "'Segoe UI', sans-serif", fontSize: "12px", fontWeight: 600, color: "#94A3B8", letterSpacing: "4px", textTransform: "uppercase", marginTop: "6px" }}>fast havale</span>
-        )
+        tagline: () => <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "12px" }}>SECURE PAYMENTS</span>
     },
     {
         id: 8,
-        name: "Konsept 8 — Underline Accent",
-        desc: "Alt çizgi vurgusu ile sade ama güçlü marka ifadesi.",
+        name: "Konsept 8 — Chip Gradient Circle",
+        desc: "Dairesel form ve gradient ile yumuşak geçiş.",
         bg: "#FFFFFF",
-        image: "/gorseller/08_underline_accent.png",
+        image: "/gorseller/13_chip_gradient_circle.png",
         render: () => (
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", fontFamily: "'Segoe UI', sans-serif" }}>
-                <span style={{ fontSize: "44px", fontWeight: 700, color: "#0F172A", letterSpacing: "-1.5px" }}>PayCore</span>
-                <div style={{ height: "3px", width: "60px", background: "linear-gradient(90deg, #3B82F6, #06B6D4)", borderRadius: "2px", marginTop: "2px" }} />
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "'Segoe UI', sans-serif" }}>
+                <div style={{ width: "44px", height: "44px", borderRadius: "50%", background: "linear-gradient(135deg, #3B82F6, #06B6D4)" }} />
+                <span style={{ fontSize: "32px", fontWeight: 700, color: "#0F172A" }}>PayCore</span>
             </div>
         ),
-        tagline: () => (
-            <span style={{ fontFamily: "'Segoe UI', sans-serif", fontSize: "13px", fontWeight: 500, color: "#94A3B8", letterSpacing: "3px", textTransform: "uppercase", marginTop: "10px" }}>fast havale</span>
-        )
+        tagline: () => <span style={{ color: "#94A3B8", fontSize: "12px" }}>Fast & Fluid Havale</span>
     },
     {
         id: 9,
-        name: "Konsept 9 — Monospace Tech",
-        desc: "Developer/API odaklı marka hissi. Teknik güvenilirlik.",
+        name: "Konsept 9 — Chip Hexagon Dark",
+        desc: "Altıgen formlu teknik yapı.",
         bg: "#0F172A",
-        image: "/gorseller/09_terminal.png",
+        image: "/gorseller/15_chip_hexagon_dark.png",
         render: () => (
-            <div style={{ display: "flex", alignItems: "center", gap: "0px", fontFamily: "'Courier New', monospace" }}>
-                <span style={{ fontSize: "14px", fontWeight: 400, color: "#64748B", marginRight: "6px" }}>$</span>
-                <span style={{ fontSize: "40px", fontWeight: 700, color: "#E2E8F0", letterSpacing: "2px" }}>PAYCORE</span>
-                <div style={{
-                    width: "3px", height: "36px", background: "#3B82F6",
-                    marginLeft: "4px", animation: "blink 1s infinite",
-                }} />
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "'Segoe UI', sans-serif" }}>
+                <div style={{ width: "40px", height: "40px", background: "#3B82F6", clipPath: "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)" }} />
+                <span style={{ fontSize: "32px", fontWeight: 700, color: "#FFFFFF" }}>PayCore</span>
             </div>
         ),
-        tagline: () => (
-            <span style={{ fontFamily: "'Courier New', monospace", fontSize: "12px", fontWeight: 400, color: "#475569", letterSpacing: "3px", marginTop: "6px" }}>// fast havale</span>
-        )
+        tagline: () => <span style={{ color: "rgba(255,255,255,0.3)", fontSize: "12px" }}>TECH INFRASTRUCTURE</span>
     },
     {
         id: 10,
-        name: "Konsept 10 — Circle Mark + Type",
-        desc: "Harf ikonu + wordmark kombinasyonu. Uygulama ve web için ideal.",
+        name: "Konsept 10 — Chip App Icon",
+        desc: "Uygulama ikonu odaklı modern görünüm.",
         bg: "#FFFFFF",
-        image: "/gorseller/10_icon_wordmark (1).png",
+        image: "/gorseller/20_chip_app_icon.png",
         render: () => (
-            <div style={{ display: "flex", alignItems: "center", gap: "14px", fontFamily: "'Segoe UI', sans-serif" }}>
-                <div style={{
-                    width: "52px", height: "52px", borderRadius: "14px",
-                    background: "linear-gradient(135deg, #1E40AF, #3B82F6)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    color: "#FFFFFF", fontSize: "24px", fontWeight: 800, letterSpacing: "-1px"
-                }}>Pc</div>
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                    <span style={{ fontSize: "36px", fontWeight: 700, color: "#0F172A", letterSpacing: "-1.5px", lineHeight: 1 }}>PayCore</span>
-                    <span style={{ fontSize: "11px", fontWeight: 600, color: "#94A3B8", letterSpacing: "4px", textTransform: "uppercase", marginTop: "2px" }}>fast havale</span>
-                </div>
+            <div style={{ display: "flex", alignItems: "center", gap: "15px", fontFamily: "'Segoe UI', sans-serif" }}>
+                <div style={{ width: "50px", height: "50px", borderRadius: "12px", background: "#3B82F6", boxShadow: "0 4px 12px rgba(59, 130, 246, 0.4)" }} />
+                <span style={{ fontSize: "32px", fontWeight: 700, color: "#0F172A" }}>PayCore</span>
             </div>
         ),
-        tagline: () => null
+        tagline: () => <span style={{ color: "#3B82F6", fontSize: "12px", fontWeight: 600 }}>FAST HAVALE</span>
     }
 ];
 
@@ -199,10 +176,12 @@ export default function PayCoreLogoShowcase() {
         const handleKeyDown = (e) => {
             if (!fullscreen) return;
             if (e.key === "ArrowRight") {
-                const next = concepts.find(c => c.id === (fullscreen.id === 10 ? 1 : fullscreen.id + 1));
+                const currentIndex = concepts.findIndex(c => c.id === fullscreen.id);
+                const next = concepts[(currentIndex + 1) % concepts.length];
                 setFullscreen(next);
             } else if (e.key === "ArrowLeft") {
-                const prev = concepts.find(c => c.id === (fullscreen.id === 1 ? 10 : fullscreen.id - 1));
+                const currentIndex = concepts.findIndex(c => c.id === fullscreen.id);
+                const prev = concepts[(currentIndex - 1 + concepts.length) % concepts.length];
                 setFullscreen(prev);
             } else if (e.key === "Escape") {
                 setFullscreen(null);
@@ -244,7 +223,7 @@ export default function PayCoreLogoShowcase() {
                 <div style={{ marginBottom: "48px", textAlign: "center" }}>
                     <p style={{ fontSize: "11px", fontWeight: 600, color: "#3B82F6", letterSpacing: "4px", textTransform: "uppercase", marginBottom: "12px" }}>Logo Redesign Proposal</p>
                     <h1 style={{ fontSize: "36px", fontWeight: 800, color: "#FFFFFF", letterSpacing: "-1.5px", margin: 0 }}>PayCore — Konseptler</h1>
-                    <p style={{ fontSize: "15px", color: "#64748B", marginTop: "12px", lineHeight: 1.6 }}>Ödeme yöntemi markası için 10 farklı tipografik yön</p>
+                    <p style={{ fontSize: "15px", color: "#64748B", marginTop: "12px", lineHeight: 1.6 }}>Ödeme yöntemi markası için {concepts.length} farklı tipografik yön</p>
                 </div>
 
                 <div style={{
@@ -252,7 +231,7 @@ export default function PayCoreLogoShowcase() {
                     gridTemplateColumns: "repeat(2, 1fr)",
                     gap: "16px"
                 }}>
-                    {concepts.map((c) => (
+                    {concepts.map((c, index) => (
                         <div
                             key={c.id}
                             onClick={() => setFullscreen(c)}
@@ -282,7 +261,7 @@ export default function PayCoreLogoShowcase() {
                                 letterSpacing: "1px",
                                 fontFamily: "'Courier New', monospace"
                             }}>
-                                {String(c.id).padStart(2, "0")}
+                                {String(index + 1).padStart(2, "0")}
                             </div>
 
                             {c.render()}
@@ -335,7 +314,7 @@ export default function PayCoreLogoShowcase() {
                         fontWeight: 500,
                         zIndex: 1001
                     }}>
-                        <span style={{ color: "rgba(255,255,255,0.5)" }}>#{String(fullscreen.id).padStart(2, "0")}</span>
+                        <span style={{ color: "rgba(255,255,255,0.5)" }}>#{String(concepts.findIndex(c => c.id === fullscreen.id) + 1).padStart(2, "0")}</span>
                         <div style={{ width: "1px", height: "14px", background: "rgba(255,255,255,0.2)" }} />
                         <span>{fullscreen.name.split(" — ")[1]}</span>
                     </div>
@@ -344,7 +323,8 @@ export default function PayCoreLogoShowcase() {
                     <button
                         onClick={(e) => {
                             e.stopPropagation();
-                            const prev = concepts.find(c => c.id === (fullscreen.id === 1 ? concepts.length : fullscreen.id - 1));
+                            const currentIndex = concepts.findIndex(c => c.id === fullscreen.id);
+                            const prev = concepts[(currentIndex - 1 + concepts.length) % concepts.length];
                             setFullscreen(prev);
                         }}
                         style={{
@@ -361,8 +341,6 @@ export default function PayCoreLogoShowcase() {
                             justifyContent: "center",
                             transition: "all 0.2s"
                         }}
-                        onMouseEnter={(e) => e.target.style.background = "rgba(255,255,255,0.2)"}
-                        onMouseLeave={(e) => e.target.style.background = "rgba(255,255,255,0.1)"}
                     >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
                     </button>
@@ -370,7 +348,8 @@ export default function PayCoreLogoShowcase() {
                     <button
                         onClick={(e) => {
                             e.stopPropagation();
-                            const next = concepts.find(c => c.id === (fullscreen.id === concepts.length ? 1 : fullscreen.id + 1));
+                            const currentIndex = concepts.findIndex(c => c.id === fullscreen.id);
+                            const next = concepts[(currentIndex + 1) % concepts.length];
                             setFullscreen(next);
                         }}
                         style={{
@@ -387,8 +366,6 @@ export default function PayCoreLogoShowcase() {
                             justifyContent: "center",
                             transition: "all 0.2s"
                         }}
-                        onMouseEnter={(e) => e.target.style.background = "rgba(255,255,255,0.2)"}
-                        onMouseLeave={(e) => e.target.style.background = "rgba(255,255,255,0.1)"}
                     >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </button>
@@ -427,8 +404,6 @@ export default function PayCoreLogoShowcase() {
                             boxShadow: "0 10px 20px rgba(59, 130, 246, 0.3)",
                             transition: "transform 0.2s ease"
                         }}
-                        onMouseEnter={(e) => e.target.style.transform = "scale(1.05)"}
-                        onMouseLeave={(e) => e.target.style.transform = "scale(1)"}
                     >
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                         İndir (PNG)
