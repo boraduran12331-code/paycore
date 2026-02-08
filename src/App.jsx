@@ -23,16 +23,16 @@ const concepts = [
     { id: "c25", name: "Konsept 20 — Chip Split Color", image: "/gorseller/25_chip_split_color.png", bg: "#FFFFFF" },
     { id: "c26", name: "Konsept 21 — Chip Minimal Line", image: "/gorseller/26_chip_minimal_line.png", bg: "#F8FAFC" },
     { id: "c27", name: "Konsept 22 — Chip Glow Center", image: "/gorseller/27_chip_glow_center.png", bg: "#0A1628" },
-    { id: "c28", name: "Konsept 23 — Chip Bracket Hybrid", image: "/gorseller/28_chip_bracket_hybrid.png", bg: "#FFFFFF" },
+    { id: "c31", name: "Konsept 23 — Chip Bracket Hybrid", image: "/gorseller/28_chip_bracket_hybrid.png", bg: "#FFFFFF" },
     { id: "c29", name: "Konsept 24 — Chip Wide Horizontal", image: "/gorseller/29_chip_wide_horizontal.png", bg: "#F1F5F9" },
     { id: "c30", name: "Konsept 25 — Chip Stacked Centered", image: "/gorseller/30_chip_stacked_centered.png", bg: "#0F172A" }
 ];
 
 const tutorialSteps = [
     { title: "Hoş Geldiniz", text: "PayCore logo sunum paneline hoş geldiniz. Tasarımları incelemek için birkaç hızlı ipucu.", icon: "👋" },
-    { title: "Tasarımları İnceleyin", text: "Beğendiğiniz herhangi bir tasarıma tıklayarak tam ekran moduna geçebilirsiniz.", icon: "🎯" },
-    { title: "Hızlı Geçiş Yapın", text: "Tam ekran modundayken klavyenizin sağ/sol ok tuşlarını veya yanlardaki okları kullanarak kaydırabilirsiniz.", icon: "↔️" },
-    { title: "Logonuzu İndirin", text: "Beğendiğiniz tasarımı yüksek çözünürlüklü PNG olarak indirmek için 'İndir' butonuna basın.", icon: "📥" }
+    { title: "Kullanım Önerisi", text: "Tüm detayları ve doğru renkleri görebilmek için bilgisayar üzerinden görüntülenmesi önerilir.", icon: "💻" },
+    { title: "Taslak Çalışmalar", text: "Çalışmalar şu an taslak (draft) aşamasındadır. Beğenilen tasarım üzerinden detaylı revizeler yapılacaktır.", icon: "📝" },
+    { title: "İnceleme ve İndirme", text: "Görsellere tıklayarak tam ekran açabilir, klavye okları ile gezebilir ve beğendiğiniz tasarımı indirebilirsiniz.", icon: "🎯" }
 ];
 
 export default function PayCoreLogoShowcase() {
@@ -60,7 +60,7 @@ export default function PayCoreLogoShowcase() {
         }
     };
 
-    // Keyboard navigation for gallery
+    // Keyboard navigation
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (showTutorial) return;
@@ -120,7 +120,7 @@ export default function PayCoreLogoShowcase() {
                     .concept-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
                 }
                 .concept-card:hover img {
-                    transform: scale(1.05);
+                    transform: scale(1.03);
                 }
                 .nav-btn {
                     width: 44px; height: 44px;
@@ -146,7 +146,8 @@ export default function PayCoreLogoShowcase() {
                             style={{
                                 background: c.bg,
                                 borderRadius: "20px",
-                                height: "200px",
+                                // Mobilde dikey alanı artırmak için height clamp kullandık
+                                height: "clamp(220px, 35vh, 260px)",
                                 cursor: "pointer",
                                 display: "flex",
                                 alignItems: "center",
@@ -176,8 +177,9 @@ export default function PayCoreLogoShowcase() {
                                 src={c.image}
                                 alt={c.name}
                                 style={{
-                                    width: "75%",
-                                    height: "75%",
+                                    // Mobilde daha büyük gözükmesi için alanı genişletiyoruz
+                                    width: "88%",
+                                    height: "88%",
                                     objectFit: "contain",
                                     transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)"
                                 }}
@@ -192,7 +194,7 @@ export default function PayCoreLogoShowcase() {
                 <div style={{
                     position: "fixed",
                     top: 0, left: 0, right: 0, bottom: 0,
-                    background: "rgba(0,0,0,0.9)",
+                    background: "rgba(0,0,0,0.92)",
                     backdropFilter: "blur(12px)",
                     zIndex: 2000,
                     display: "flex",
@@ -201,7 +203,7 @@ export default function PayCoreLogoShowcase() {
                     padding: "20px"
                 }}>
                     <div style={{
-                        maxWidth: "360px",
+                        maxWidth: "400px",
                         width: "100%",
                         background: "#121212",
                         borderRadius: "24px",
@@ -217,7 +219,7 @@ export default function PayCoreLogoShowcase() {
                         <h2 style={{ color: "#FFF", fontSize: "20px", fontWeight: 800, marginBottom: "12px" }}>
                             {tutorialSteps[tutorialIndex].title}
                         </h2>
-                        <p style={{ color: "#888", fontSize: "15px", lineHeight: 1.6, marginBottom: "28px" }}>
+                        <p style={{ color: "#AAA", fontSize: "15px", lineHeight: 1.6, marginBottom: "28px" }}>
                             {tutorialSteps[tutorialIndex].text}
                         </p>
 
@@ -243,11 +245,12 @@ export default function PayCoreLogoShowcase() {
                                 color: "#FFF",
                                 border: "none",
                                 fontSize: "15px",
-                                fontWeight: 600,
-                                cursor: "pointer"
+                                fontWeight: 700,
+                                cursor: "pointer",
+                                boxShadow: "0 4px 12px rgba(59, 130, 246, 0.3)"
                             }}
                         >
-                            {tutorialIndex === tutorialSteps.length - 1 ? "Başlayalım" : "Sıradaki"}
+                            {tutorialIndex === tutorialSteps.length - 1 ? "Sistemi Aç" : "Sıradaki"}
                         </button>
                     </div>
                 </div>
@@ -270,7 +273,6 @@ export default function PayCoreLogoShowcase() {
                         backdropFilter: "blur(15px)"
                     }}
                 >
-                    {/* Header Info - Desktop View */}
                     <div style={{
                         position: "absolute",
                         top: "20px",
@@ -295,7 +297,6 @@ export default function PayCoreLogoShowcase() {
                         </span>
                     </div>
 
-                    {/* Navigation Buttons */}
                     <button
                         className="nav-btn"
                         onClick={(e) => {
@@ -351,8 +352,8 @@ export default function PayCoreLogoShowcase() {
                         src={fullscreen.image}
                         alt={fullscreen.name}
                         style={{
-                            maxWidth: "90%",
-                            maxHeight: "70%",
+                            maxWidth: "95%",
+                            maxHeight: "75%",
                             objectFit: "contain",
                             borderRadius: "12px",
                             boxShadow: "0 20px 60px rgba(0,0,0,0.8)",
@@ -360,7 +361,6 @@ export default function PayCoreLogoShowcase() {
                         }}
                     />
 
-                    {/* Download Button */}
                     <button
                         onClick={(e) => handleDownload(e, fullscreen.image, `PayCore_Konsept_${fullscreen.id}.png`)}
                         style={{
