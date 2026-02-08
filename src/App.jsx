@@ -94,10 +94,12 @@ export default function PayCoreLogoShowcase() {
         <div style={{
             minHeight: "100vh",
             background: "#0A0A0A",
-            padding: "40px 24px",
-            fontFamily: "'Segoe UI', -apple-system, sans-serif"
+            padding: "20px 16px",
+            fontFamily: "'Segoe UI', -apple-system, sans-serif",
+            boxSizing: "border-box"
         }}>
             <style>{`
+                * { box-sizing: border-box; }
                 @keyframes fadeIn {
                     from { opacity: 0; transform: scale(0.95); }
                     to { opacity: 1; transform: scale(1); }
@@ -106,23 +108,36 @@ export default function PayCoreLogoShowcase() {
                     from { opacity: 0; transform: translateY(20px); }
                     to { opacity: 1; transform: translateY(0); }
                 }
+                .concept-grid {
+                    display: grid;
+                    grid-template-columns: repeat(1, 1fr);
+                    gap: 16px;
+                }
+                @media (min-width: 640px) {
+                    .concept-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+                }
+                @media (min-width: 1024px) {
+                    .concept-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+                }
                 .concept-card:hover img {
                     transform: scale(1.05);
+                }
+                .nav-btn {
+                    width: 44px; height: 44px;
+                }
+                @media (min-width: 768px) {
+                    .nav-btn { width: 60px; height: 60px; }
                 }
             `}</style>
 
             <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-                <div style={{ marginBottom: "60px", textAlign: "center" }}>
-                    <p style={{ fontSize: "11px", fontWeight: 600, color: "#3B82F6", letterSpacing: "4px", textTransform: "uppercase", marginBottom: "12px" }}>Logo Redesign Proposal</p>
-                    <h1 style={{ fontSize: "42px", fontWeight: 800, color: "#FFFFFF", letterSpacing: "-1.5px", margin: 0 }}>PayCore — Konseptler</h1>
-                    <p style={{ fontSize: "16px", color: "#64748B", marginTop: "16px", lineHeight: 1.6 }}>Ödeme yöntemi markası için {concepts.length} farklı görsel çalışma</p>
+                <div style={{ marginBottom: "40px", textAlign: "center", padding: "0 10px" }}>
+                    <p style={{ fontSize: "10px", fontWeight: 600, color: "#3B82F6", letterSpacing: "3px", textTransform: "uppercase", marginBottom: "8px" }}>Logo Redesign Proposal</p>
+                    <h1 style={{ fontSize: "clamp(24px, 5vw, 42px)", fontWeight: 800, color: "#FFFFFF", letterSpacing: "-1px", margin: 0 }}>PayCore — Konseptler</h1>
+                    <p style={{ fontSize: "14px", color: "#64748B", marginTop: "12px", lineHeight: 1.5 }}>{concepts.length} farklı tasarım yönü</p>
                 </div>
 
-                <div style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-                    gap: "24px"
-                }}>
+                <div className="concept-grid">
                     {concepts.map((c, index) => (
                         <div
                             key={c.id}
@@ -130,8 +145,8 @@ export default function PayCoreLogoShowcase() {
                             onClick={() => setFullscreen(c)}
                             style={{
                                 background: c.bg,
-                                borderRadius: "24px",
-                                height: "240px",
+                                borderRadius: "20px",
+                                height: "200px",
                                 cursor: "pointer",
                                 display: "flex",
                                 alignItems: "center",
@@ -140,17 +155,17 @@ export default function PayCoreLogoShowcase() {
                                 position: "relative",
                                 overflow: "hidden",
                                 border: "1px solid rgba(255,255,255,0.05)",
-                                boxShadow: "0 10px 30px rgba(0,0,0,0.2)"
+                                boxShadow: "0 8px 24px rgba(0,0,0,0.15)"
                             }}
                         >
                             <div style={{
-                                position: "absolute", top: "20px", left: "20px",
-                                fontSize: "12px", fontWeight: 800,
+                                position: "absolute", top: "16px", left: "16px",
+                                fontSize: "11px", fontWeight: 800,
                                 zIndex: 10,
                                 color: c.bg === "#FFFFFF" || c.bg === "#F8FAFC" || c.bg === "#F1F5F9" ? "#3B82F6" : "#FFFFFF",
                                 background: c.bg === "#FFFFFF" || c.bg === "#F8FAFC" || c.bg === "#F1F5F9" ? "rgba(59, 130, 246, 0.1)" : "rgba(255,255,255,0.15)",
-                                padding: "6px 12px",
-                                borderRadius: "100px",
+                                padding: "4px 10px",
+                                borderRadius: "8px",
                                 backdropFilter: "blur(5px)",
                                 fontFamily: "'Courier New', monospace"
                             }}>
@@ -161,8 +176,8 @@ export default function PayCoreLogoShowcase() {
                                 src={c.image}
                                 alt={c.name}
                                 style={{
-                                    width: "80%",
-                                    height: "80%",
+                                    width: "75%",
+                                    height: "75%",
                                     objectFit: "contain",
                                     transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)"
                                 }}
@@ -177,7 +192,7 @@ export default function PayCoreLogoShowcase() {
                 <div style={{
                     position: "fixed",
                     top: 0, left: 0, right: 0, bottom: 0,
-                    background: "rgba(0,0,0,0.85)",
+                    background: "rgba(0,0,0,0.9)",
                     backdropFilter: "blur(12px)",
                     zIndex: 2000,
                     display: "flex",
@@ -186,32 +201,32 @@ export default function PayCoreLogoShowcase() {
                     padding: "20px"
                 }}>
                     <div style={{
-                        maxWidth: "400px",
+                        maxWidth: "360px",
                         width: "100%",
                         background: "#121212",
-                        borderRadius: "32px",
+                        borderRadius: "24px",
                         border: "1px solid rgba(255,255,255,0.1)",
-                        padding: "40px",
+                        padding: "32px 24px",
                         textAlign: "center",
-                        boxShadow: "0 30px 60px rgba(0,0,0,0.5)",
+                        boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
                         animation: "fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1)"
                     }}>
-                        <div style={{ fontSize: "60px", marginBottom: "24px" }}>
+                        <div style={{ fontSize: "48px", marginBottom: "20px" }}>
                             {tutorialSteps[tutorialIndex].icon}
                         </div>
-                        <h2 style={{ color: "#FFF", fontSize: "24px", fontWeight: 800, marginBottom: "16px" }}>
+                        <h2 style={{ color: "#FFF", fontSize: "20px", fontWeight: 800, marginBottom: "12px" }}>
                             {tutorialSteps[tutorialIndex].title}
                         </h2>
-                        <p style={{ color: "#888", fontSize: "16px", lineHeight: 1.6, marginBottom: "32px" }}>
+                        <p style={{ color: "#888", fontSize: "15px", lineHeight: 1.6, marginBottom: "28px" }}>
                             {tutorialSteps[tutorialIndex].text}
                         </p>
 
-                        <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginBottom: "32px" }}>
+                        <div style={{ display: "flex", justifyContent: "center", gap: "6px", marginBottom: "28px" }}>
                             {tutorialSteps.map((_, idx) => (
                                 <div key={idx} style={{
-                                    width: idx === tutorialIndex ? "24px" : "8px",
-                                    height: "8px",
-                                    borderRadius: "4px",
+                                    width: idx === tutorialIndex ? "20px" : "6px",
+                                    height: "6px",
+                                    borderRadius: "3px",
                                     background: idx === tutorialIndex ? "#3B82F6" : "rgba(255,255,255,0.1)",
                                     transition: "all 0.3s ease"
                                 }} />
@@ -222,15 +237,14 @@ export default function PayCoreLogoShowcase() {
                             onClick={nextStep}
                             style={{
                                 width: "100%",
-                                padding: "16px",
-                                borderRadius: "16px",
+                                padding: "14px",
+                                borderRadius: "12px",
                                 background: "#3B82F6",
                                 color: "#FFF",
                                 border: "none",
-                                fontSize: "16px",
+                                fontSize: "15px",
                                 fontWeight: 600,
-                                cursor: "pointer",
-                                transition: "transform 0.2s"
+                                cursor: "pointer"
                             }}
                         >
                             {tutorialIndex === tutorialSteps.length - 1 ? "Başlayalım" : "Sıradaki"}
@@ -251,36 +265,39 @@ export default function PayCoreLogoShowcase() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        padding: "40px",
+                        padding: "20px",
                         cursor: "zoom-out",
                         backdropFilter: "blur(15px)"
                     }}
                 >
+                    {/* Header Info - Desktop View */}
                     <div style={{
                         position: "absolute",
-                        top: "30px",
-                        left: "50%",
-                        transform: "translateX(-50%)",
+                        top: "20px",
+                        display: "flex",
                         background: "rgba(255,255,255,0.08)",
                         backdropFilter: "blur(20px)",
-                        padding: "14px 28px",
+                        padding: "10px 20px",
                         borderRadius: "100px",
                         border: "1px solid rgba(255,255,255,0.1)",
-                        display: "flex",
                         alignItems: "center",
-                        gap: "16px",
+                        gap: "12px",
                         color: "#FFFFFF",
-                        fontSize: "15px",
+                        fontSize: "13px",
                         fontWeight: 600,
                         zIndex: 1001,
                         animation: "slideUp 0.4s ease-out"
                     }}>
                         <span style={{ color: "#3B82F6" }}>#{String(concepts.findIndex(c => c.id === fullscreen.id) + 1).padStart(2, "0")}</span>
-                        <div style={{ width: "1px", height: "16px", background: "rgba(255,255,255,0.2)" }} />
-                        <span>{fullscreen.name.split(" — ")[1] || fullscreen.name}</span>
+                        <div style={{ width: "1px", height: "14px", background: "rgba(255,255,255,0.2)" }} />
+                        <span style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: "150px" }}>
+                            {fullscreen.name.split(" — ")[1] || fullscreen.name}
+                        </span>
                     </div>
 
+                    {/* Navigation Buttons */}
                     <button
+                        className="nav-btn"
                         onClick={(e) => {
                             e.stopPropagation();
                             const currentIndex = concepts.findIndex(c => c.id === fullscreen.id);
@@ -289,22 +306,23 @@ export default function PayCoreLogoShowcase() {
                         }}
                         style={{
                             position: "absolute",
-                            left: "30px",
+                            left: "10px",
                             background: "rgba(255,255,255,0.05)",
                             border: "1px solid rgba(255,255,255,0.1)",
                             color: "#FFFFFF",
-                            width: "60px", height: "60px",
                             borderRadius: "50%",
                             cursor: "pointer",
                             display: "flex",
                             alignItems: "center",
-                            justifyContent: "center"
+                            justifyContent: "center",
+                            zIndex: 1002
                         }}
                     >
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
                     </button>
 
                     <button
+                        className="nav-btn"
                         onClick={(e) => {
                             e.stopPropagation();
                             const currentIndex = concepts.findIndex(c => c.id === fullscreen.id);
@@ -313,19 +331,19 @@ export default function PayCoreLogoShowcase() {
                         }}
                         style={{
                             position: "absolute",
-                            right: "30px",
+                            right: "10px",
                             background: "rgba(255,255,255,0.05)",
                             border: "1px solid rgba(255,255,255,0.1)",
                             color: "#FFFFFF",
-                            width: "60px", height: "60px",
                             borderRadius: "50%",
                             cursor: "pointer",
                             display: "flex",
                             alignItems: "center",
-                            justifyContent: "center"
+                            justifyContent: "center",
+                            zIndex: 1002
                         }}
                     >
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </button>
 
                     <img
@@ -333,37 +351,39 @@ export default function PayCoreLogoShowcase() {
                         src={fullscreen.image}
                         alt={fullscreen.name}
                         style={{
-                            maxWidth: "85%",
-                            maxHeight: "80%",
+                            maxWidth: "90%",
+                            maxHeight: "70%",
                             objectFit: "contain",
-                            borderRadius: "16px",
-                            boxShadow: "0 30px 70px rgba(0,0,0,0.8)",
+                            borderRadius: "12px",
+                            boxShadow: "0 20px 60px rgba(0,0,0,0.8)",
                             animation: "fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1)"
                         }}
                     />
 
+                    {/* Download Button */}
                     <button
                         onClick={(e) => handleDownload(e, fullscreen.image, `PayCore_Konsept_${fullscreen.id}.png`)}
                         style={{
                             position: "absolute",
-                            bottom: "40px",
+                            bottom: "30px",
                             background: "#3B82F6",
                             color: "#FFFFFF",
                             border: "none",
-                            padding: "16px 32px",
-                            borderRadius: "14px",
-                            fontSize: "16px",
+                            padding: "14px 28px",
+                            borderRadius: "12px",
+                            fontSize: "14px",
                             fontWeight: 700,
                             cursor: "pointer",
                             display: "flex",
                             alignItems: "center",
-                            gap: "12px",
-                            boxShadow: "0 15px 30px rgba(59, 130, 246, 0.4)",
-                            animation: "slideUp 0.5s ease-out"
+                            gap: "8px",
+                            boxShadow: "0 12px 24px rgba(59, 130, 246, 0.4)",
+                            animation: "slideUp 0.5s ease-out",
+                            zIndex: 1002
                         }}
                     >
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                        İndir (PNG)
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        İndir
                     </button>
                 </div>
             )}
