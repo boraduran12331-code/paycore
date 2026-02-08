@@ -1,186 +1,35 @@
 import { useState, useEffect } from "react";
 
 const concepts = [
-    {
-        id: 1,
-        name: "Konsept 1 — Clean Fintech",
-        desc: "Minimal, güvenilir, kurumsal. Stripe/Wise tarzı modern ödeme markası.",
-        bg: "#FFFFFF",
-        image: "/gorseller/01_clean_fintech.png",
-        render: () => (
-            <div style={{ display: "flex", alignItems: "center", gap: "0px", fontFamily: "'Segoe UI', sans-serif" }}>
-                <div style={{ display: "flex", alignItems: "center" }}>
-                    <span style={{ fontSize: "42px", fontWeight: 700, color: "#0A1628", letterSpacing: "-1.5px" }}>pay</span>
-                    <span style={{ fontSize: "42px", fontWeight: 300, color: "#0A1628", letterSpacing: "-1.5px" }}>core</span>
-                </div>
-                <div style={{
-                    width: "6px", height: "6px", borderRadius: "50%",
-                    background: "#3B82F6", marginLeft: "2px", marginTop: "16px"
-                }} />
-            </div>
-        ),
-        tagline: () => (
-            <span style={{ fontFamily: "'Segoe UI', sans-serif", fontSize: "13px", fontWeight: 500, color: "#94A3B8", letterSpacing: "4px", textTransform: "uppercase", marginTop: "4px" }}>fast havale</span>
-        )
-    },
-    {
-        id: 2,
-        name: "Konsept 2 — Bold Geometric",
-        desc: "Cesur, güçlü tipografi. Dikkat çekici marka varlığı.",
-        bg: "#0A1628",
-        image: "/gorseller/02_bold_dark.png",
-        render: () => (
-            <div style={{ display: "flex", alignItems: "center", gap: "0px", fontFamily: "'Segoe UI', sans-serif" }}>
-                <span style={{ fontSize: "48px", fontWeight: 900, color: "#FFFFFF", letterSpacing: "-2px", textTransform: "uppercase" }}>PAY</span>
-                <span style={{ fontSize: "48px", fontWeight: 900, color: "#3B82F6", letterSpacing: "-2px", textTransform: "uppercase" }}>CORE</span>
-            </div>
-        ),
-        tagline: () => (
-            <span style={{ fontFamily: "'Segoe UI', sans-serif", fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.35)", letterSpacing: "6px", textTransform: "uppercase", marginTop: "2px" }}>fast havale</span>
-        )
-    },
-    {
-        id: 3,
-        name: "Konsept 3 — Dot Separator",
-        desc: "Nokta ayracı ile modern SaaS/fintech hissi. Temiz ve akılda kalıcı.",
-        bg: "#F8FAFC",
-        image: "/gorseller/03_dot_separator.png",
-        render: () => (
-            <div style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "'Segoe UI', sans-serif" }}>
-                <span style={{ fontSize: "44px", fontWeight: 700, color: "#1E293B", letterSpacing: "-1px" }}>Pay</span>
-                <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#F59E0B", marginTop: "4px" }} />
-                <span style={{ fontSize: "44px", fontWeight: 700, color: "#1E293B", letterSpacing: "-1px" }}>Core</span>
-            </div>
-        ),
-        tagline: () => (
-            <span style={{ fontFamily: "'Segoe UI', sans-serif", fontSize: "13px", fontWeight: 500, color: "#94A3B8", letterSpacing: "3px", textTransform: "uppercase", marginTop: "6px" }}>fast havale</span>
-        )
-    },
-    {
-        id: 4,
-        name: "Konsept 4 — Gradient Modern",
-        desc: "Gradient vurgu ile dinamik ve genç marka kimliği.",
-        bg: "#FFFFFF",
-        image: "/gorseller/04_gradient_modern.png",
-        render: () => (
-            <div style={{ display: "flex", alignItems: "baseline", gap: "0px", fontFamily: "'Segoe UI', sans-serif" }}>
-                <span style={{ fontSize: "44px", fontWeight: 300, color: "#334155", letterSpacing: "-1px" }}>pay</span>
-                <span style={{
-                    fontSize: "44px", fontWeight: 800, letterSpacing: "-1px",
-                    background: "linear-gradient(135deg, #3B82F6, #06B6D4)",
-                    WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent"
-                }}>core</span>
-            </div>
-        ),
-        tagline: () => (
-            <span style={{ fontFamily: "'Segoe UI', sans-serif", fontSize: "12px", fontWeight: 600, color: "#CBD5E1", letterSpacing: "5px", textTransform: "uppercase", marginTop: "4px" }}>fast havale</span>
-        )
-    },
-    {
-        id: 5,
-        name: "Konsept 5 — Stacked",
-        desc: "Dikey yerleşimli, kompakt ve ikon-friendly yapı.",
-        bg: "#0F172A",
-        image: "/gorseller/05_stacked.png",
-        render: () => (
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", fontFamily: "'Segoe UI', sans-serif", lineHeight: 1 }}>
-                <span style={{ fontSize: "52px", fontWeight: 800, color: "#FFFFFF", letterSpacing: "-2px", textTransform: "uppercase" }}>PAY</span>
-                <span style={{ fontSize: "52px", fontWeight: 800, color: "#3B82F6", letterSpacing: "-2px", textTransform: "uppercase", marginTop: "-10px" }}>CORE</span>
-            </div>
-        ),
-        tagline: () => (
-            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginTop: "8px" }}>
-                <div style={{ height: "1px", width: "24px", background: "rgba(255,255,255,0.3)" }} />
-                <span style={{ fontFamily: "'Segoe UI', sans-serif", fontSize: "11px", fontWeight: 500, color: "rgba(255,255,255,0.4)", letterSpacing: "5px", textTransform: "uppercase" }}>fast havale</span>
-            </div>
-        )
-    },
-    {
-        id: 6,
-        name: "Konsept 6 — Chip Minimal Flat",
-        desc: "Yeni çip ikonu ile modern ve yalın tasarım.",
-        bg: "#FFFFFF",
-        image: "/gorseller/11_chip_minimal_flat.png",
-        render: () => (
-            <div style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "'Segoe UI', sans-serif" }}>
-                <div style={{ width: "40px", height: "40px", borderRadius: "8px", background: "#3B82F6" }} />
-                <span style={{ fontSize: "32px", fontWeight: 700, color: "#0F172A" }}>PayCore</span>
-            </div>
-        ),
-        tagline: () => <span style={{ color: "#94A3B8", fontSize: "12px" }}>Geleceğin Ödeme Noktası</span>
-    },
-    {
-        id: 7,
-        name: "Konsept 7 — Chip Dark Bold",
-        desc: "Koyu temalı, güçlü teknolojik duruş.",
-        bg: "#0A0A0A",
-        image: "/gorseller/12_chip_dark_bold.png",
-        render: () => (
-            <div style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "'Segoe UI', sans-serif" }}>
-                <div style={{ width: "40px", height: "40px", borderRadius: "8px", background: "#FFFFFF" }} />
-                <span style={{ fontSize: "32px", fontWeight: 800, color: "#FFFFFF" }}>PAYCORE</span>
-            </div>
-        ),
-        tagline: () => <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "12px" }}>SECURE PAYMENTS</span>
-    },
-    {
-        id: 8,
-        name: "Konsept 8 — Chip Gradient Circle",
-        desc: "Dairesel form ve gradient ile yumuşak geçiş.",
-        bg: "#FFFFFF",
-        image: "/gorseller/13_chip_gradient_circle.png",
-        render: () => (
-            <div style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "'Segoe UI', sans-serif" }}>
-                <div style={{ width: "44px", height: "44px", borderRadius: "50%", background: "linear-gradient(135deg, #3B82F6, #06B6D4)" }} />
-                <span style={{ fontSize: "32px", fontWeight: 700, color: "#0F172A" }}>PayCore</span>
-            </div>
-        ),
-        tagline: () => <span style={{ color: "#94A3B8", fontSize: "12px" }}>Fast & Fluid Havale</span>
-    },
-    {
-        id: 9,
-        name: "Konsept 9 — Chip Hexagon Dark",
-        desc: "Altıgen formlu teknik yapı.",
-        bg: "#0F172A",
-        image: "/gorseller/15_chip_hexagon_dark.png",
-        render: () => (
-            <div style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "'Segoe UI', sans-serif" }}>
-                <div style={{ width: "40px", height: "40px", background: "#3B82F6", clipPath: "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)" }} />
-                <span style={{ fontSize: "32px", fontWeight: 700, color: "#FFFFFF" }}>PayCore</span>
-            </div>
-        ),
-        tagline: () => <span style={{ color: "rgba(255,255,255,0.3)", fontSize: "12px" }}>TECH INFRASTRUCTURE</span>
-    },
-    {
-        id: 10,
-        name: "Konsept 10 — Chip App Icon",
-        desc: "Uygulama ikonu odaklı modern görünüm.",
-        bg: "#FFFFFF",
-        image: "/gorseller/20_chip_app_icon.png",
-        render: () => (
-            <div style={{ display: "flex", alignItems: "center", gap: "15px", fontFamily: "'Segoe UI', sans-serif" }}>
-                <div style={{ width: "50px", height: "50px", borderRadius: "12px", background: "#3B82F6", boxShadow: "0 4px 12px rgba(59, 130, 246, 0.4)" }} />
-                <span style={{ fontSize: "32px", fontWeight: 700, color: "#0F172A" }}>PayCore</span>
-            </div>
-        ),
-        tagline: () => <span style={{ color: "#3B82F6", fontSize: "12px", fontWeight: 600 }}>FAST HAVALE</span>
-    }
+    { id: "c1", name: "Konsept 1 — Clean Fintech", image: "/gorseller/01_clean_fintech.png", bg: "#FFFFFF" },
+    { id: "c2", name: "Konsept 2 — Bold Geometric", image: "/gorseller/02_bold_dark.png", bg: "#0A1628" },
+    { id: "c3", name: "Konsept 3 — Dot Separator", image: "/gorseller/03_dot_separator.png", bg: "#F8FAFC" },
+    { id: "c4", name: "Konsept 4 — Gradient Modern", image: "/gorseller/04_gradient_modern.png", bg: "#FFFFFF" },
+    { id: "c5", name: "Konsept 5 — Stacked", image: "/gorseller/05_stacked.png", bg: "#0F172A" },
+    { id: "c11", name: "Konsept 6 — Chip Minimal Flat", image: "/gorseller/11_chip_minimal_flat.png", bg: "#FFFFFF" },
+    { id: "c12", name: "Konsept 7 — Chip Dark Bold", image: "/gorseller/12_chip_dark_bold.png", bg: "#0A0A0A" },
+    { id: "c13", name: "Konsept 8 — Chip Gradient Circle", image: "/gorseller/13_chip_gradient_circle.png", bg: "#FFFFFF" },
+    { id: "c14", name: "Konsept 9 — Chip Outlined Light", image: "/gorseller/14_chip_outlined_light.png", bg: "#F8FAFC" },
+    { id: "c15", name: "Konsept 10 — Chip Hexagon Dark", image: "/gorseller/15_chip_hexagon_dark.png", bg: "#0F172A" },
+    { id: "c16", name: "Konsept 11 — Chip Shield", image: "/gorseller/16_chip_shield.png", bg: "#FFFFFF" },
+    { id: "c17", name: "Konsept 12 — Chip Rounded Soft", image: "/gorseller/17_chip_rounded_soft.png", bg: "#F1F5F9" },
+    { id: "c18", name: "Konsept 13 — Chip Stacked Dark", image: "/gorseller/18_chip_stacked_dark.png", bg: "#0A1628" },
+    { id: "c19", name: "Konsept 14 — Chip Line Art", image: "/gorseller/19_chip_line_art.png", bg: "#FFFFFF" },
+    { id: "c20", name: "Konsept 15 — Chip App Icon", image: "/gorseller/20_chip_app_icon.png", bg: "#FFFFFF" }
 ];
 
 export default function PayCoreLogoShowcase() {
-    const [selected, setSelected] = useState(null);
     const [fullscreen, setFullscreen] = useState(null);
 
     // Keyboard navigation
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (!fullscreen) return;
+            const currentIndex = concepts.findIndex(c => c.id === fullscreen.id);
             if (e.key === "ArrowRight") {
-                const currentIndex = concepts.findIndex(c => c.id === fullscreen.id);
                 const next = concepts[(currentIndex + 1) % concepts.length];
                 setFullscreen(next);
             } else if (e.key === "ArrowLeft") {
-                const currentIndex = concepts.findIndex(c => c.id === fullscreen.id);
                 const prev = concepts[(currentIndex - 1 + concepts.length) % concepts.length];
                 setFullscreen(prev);
             } else if (e.key === "Escape") {
@@ -209,72 +58,81 @@ export default function PayCoreLogoShowcase() {
             fontFamily: "'Segoe UI', -apple-system, sans-serif"
         }}>
             <style>{`
-                @keyframes blink {
-                    0%, 50% { opacity: 1; }
-                    51%, 100% { opacity: 0; }
-                }
                 @keyframes fadeIn {
                     from { opacity: 0; transform: scale(0.95); }
                     to { opacity: 1; transform: scale(1); }
                 }
+                .concept-card:hover img {
+                    transform: scale(1.05);
+                }
             `}</style>
 
-            <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-                <div style={{ marginBottom: "48px", textAlign: "center" }}>
+            <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+                <div style={{ marginBottom: "60px", textAlign: "center" }}>
                     <p style={{ fontSize: "11px", fontWeight: 600, color: "#3B82F6", letterSpacing: "4px", textTransform: "uppercase", marginBottom: "12px" }}>Logo Redesign Proposal</p>
-                    <h1 style={{ fontSize: "36px", fontWeight: 800, color: "#FFFFFF", letterSpacing: "-1.5px", margin: 0 }}>PayCore — Konseptler</h1>
-                    <p style={{ fontSize: "15px", color: "#64748B", marginTop: "12px", lineHeight: 1.6 }}>Ödeme yöntemi markası için {concepts.length} farklı tipografik yön</p>
+                    <h1 style={{ fontSize: "42px", fontWeight: 800, color: "#FFFFFF", letterSpacing: "-1.5px", margin: 0 }}>PayCore — Konseptler</h1>
+                    <p style={{ fontSize: "16px", color: "#64748B", marginTop: "16px", lineHeight: 1.6 }}>Ödeme yöntemi markası için {concepts.length} farklı görsel çalışma</p>
                 </div>
 
                 <div style={{
                     display: "grid",
-                    gridTemplateColumns: "repeat(2, 1fr)",
-                    gap: "16px"
+                    gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+                    gap: "24px"
                 }}>
                     {concepts.map((c, index) => (
                         <div
                             key={c.id}
+                            className="concept-card"
                             onClick={() => setFullscreen(c)}
                             style={{
                                 background: c.bg,
-                                borderRadius: "16px",
-                                padding: "40px 32px",
+                                borderRadius: "24px",
+                                height: "240px",
                                 cursor: "pointer",
                                 display: "flex",
-                                flexDirection: "column",
                                 alignItems: "center",
                                 justifyContent: "center",
-                                minHeight: "200px",
-                                border: selected === c.id ? "2px solid #3B82F6" : "2px solid transparent",
-                                transition: "all 0.2s ease",
+                                transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                                 position: "relative",
-                                overflow: "hidden"
+                                overflow: "hidden",
+                                border: "1px solid rgba(255,255,255,0.05)",
+                                boxShadow: "0 10px 30px rgba(0,0,0,0.2)"
                             }}
                         >
+                            {/* Concept Number Badge */}
                             <div style={{
-                                position: "absolute", top: "16px", left: "20px",
+                                position: "absolute", top: "20px", left: "20px",
                                 fontSize: "12px", fontWeight: 800,
+                                zIndex: 10,
                                 color: c.bg === "#FFFFFF" || c.bg === "#F8FAFC" || c.bg === "#F1F5F9" ? "#3B82F6" : "#FFFFFF",
                                 background: c.bg === "#FFFFFF" || c.bg === "#F8FAFC" || c.bg === "#F1F5F9" ? "rgba(59, 130, 246, 0.1)" : "rgba(255,255,255,0.15)",
-                                padding: "4px 10px",
-                                borderRadius: "8px",
-                                letterSpacing: "1px",
+                                padding: "6px 12px",
+                                borderRadius: "10px",
+                                backdropFilter: "blur(5px)",
                                 fontFamily: "'Courier New', monospace"
                             }}>
                                 {String(index + 1).padStart(2, "0")}
                             </div>
 
-                            {c.render()}
-                            {c.tagline()}
+                            <img
+                                src={c.image}
+                                alt={c.name}
+                                style={{
+                                    width: "80%",
+                                    height: "80%",
+                                    objectFit: "contain",
+                                    transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)"
+                                }}
+                            />
                         </div>
                     ))}
                 </div>
 
                 <p style={{
-                    textAlign: "center", marginTop: "40px",
-                    fontSize: "12px", color: "#334155"
+                    textAlign: "center", marginTop: "60px",
+                    fontSize: "14px", color: "#475569", fontWeight: 500
                 }}>
-                    Görseli tam ekran görmek ve indirmek için konsepte tıklayın
+                    Detaylı incelemek ve indirmek için görsellere tıklayın
                 </p>
             </div>
 
@@ -285,38 +143,39 @@ export default function PayCoreLogoShowcase() {
                     style={{
                         position: "fixed",
                         top: 0, left: 0, right: 0, bottom: 0,
-                        background: "rgba(0,0,0,0.95)",
+                        background: "rgba(0,0,0,0.98)",
                         zIndex: 1000,
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         padding: "40px",
                         cursor: "zoom-out",
-                        backdropFilter: "blur(10px)"
+                        backdropFilter: "blur(15px)"
                     }}
                 >
                     {/* Header Info */}
                     <div style={{
                         position: "absolute",
-                        top: "20px",
+                        top: "30px",
                         left: "50%",
                         transform: "translateX(-50%)",
-                        background: "rgba(255,255,255,0.1)",
-                        backdropFilter: "blur(15px)",
-                        padding: "12px 24px",
+                        background: "rgba(255,255,255,0.08)",
+                        backdropFilter: "blur(20px)",
+                        padding: "14px 28px",
                         borderRadius: "100px",
                         border: "1px solid rgba(255,255,255,0.1)",
                         display: "flex",
                         alignItems: "center",
                         gap: "16px",
                         color: "#FFFFFF",
-                        fontSize: "14px",
-                        fontWeight: 500,
-                        zIndex: 1001
+                        fontSize: "15px",
+                        fontWeight: 600,
+                        zIndex: 1001,
+                        animation: "fadeIn 0.4s ease-out"
                     }}>
-                        <span style={{ color: "rgba(255,255,255,0.5)" }}>#{String(concepts.findIndex(c => c.id === fullscreen.id) + 1).padStart(2, "0")}</span>
-                        <div style={{ width: "1px", height: "14px", background: "rgba(255,255,255,0.2)" }} />
-                        <span>{fullscreen.name.split(" — ")[1]}</span>
+                        <span style={{ color: "#3B82F6" }}>#{String(concepts.findIndex(c => c.id === fullscreen.id) + 1).padStart(2, "0")}</span>
+                        <div style={{ width: "1px", height: "16px", background: "rgba(255,255,255,0.2)" }} />
+                        <span>{fullscreen.name.split(" — ")[1] || fullscreen.name}</span>
                     </div>
 
                     {/* Navigation Buttons */}
@@ -329,11 +188,11 @@ export default function PayCoreLogoShowcase() {
                         }}
                         style={{
                             position: "absolute",
-                            left: "20px",
-                            background: "rgba(255,255,255,0.1)",
-                            border: "none",
+                            left: "30px",
+                            background: "rgba(255,255,255,0.05)",
+                            border: "1px solid rgba(255,255,255,0.1)",
                             color: "#FFFFFF",
-                            width: "50px", height: "50px",
+                            width: "60px", height: "60px",
                             borderRadius: "50%",
                             cursor: "pointer",
                             display: "flex",
@@ -342,7 +201,7 @@ export default function PayCoreLogoShowcase() {
                             transition: "all 0.2s"
                         }}
                     >
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
                     </button>
 
                     <button
@@ -354,11 +213,11 @@ export default function PayCoreLogoShowcase() {
                         }}
                         style={{
                             position: "absolute",
-                            right: "20px",
-                            background: "rgba(255,255,255,0.1)",
-                            border: "none",
+                            right: "30px",
+                            background: "rgba(255,255,255,0.05)",
+                            border: "1px solid rgba(255,255,255,0.1)",
                             color: "#FFFFFF",
-                            width: "50px", height: "50px",
+                            width: "60px", height: "60px",
                             borderRadius: "50%",
                             cursor: "pointer",
                             display: "flex",
@@ -367,7 +226,7 @@ export default function PayCoreLogoShowcase() {
                             transition: "all 0.2s"
                         }}
                     >
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </button>
 
                     <img
@@ -376,11 +235,11 @@ export default function PayCoreLogoShowcase() {
                         alt={fullscreen.name}
                         style={{
                             maxWidth: "85%",
-                            maxHeight: "75%",
+                            maxHeight: "80%",
                             objectFit: "contain",
-                            borderRadius: "12px",
-                            boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
-                            animation: "fadeIn 0.3s ease-out"
+                            borderRadius: "16px",
+                            boxShadow: "0 30px 70px rgba(0,0,0,0.8)",
+                            animation: "fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1)"
                         }}
                     />
 
@@ -393,19 +252,20 @@ export default function PayCoreLogoShowcase() {
                             background: "#3B82F6",
                             color: "#FFFFFF",
                             border: "none",
-                            padding: "14px 28px",
-                            borderRadius: "12px",
-                            fontSize: "15px",
-                            fontWeight: 600,
+                            padding: "16px 32px",
+                            borderRadius: "14px",
+                            fontSize: "16px",
+                            fontWeight: 700,
                             cursor: "pointer",
                             display: "flex",
                             alignItems: "center",
-                            gap: "10px",
-                            boxShadow: "0 10px 20px rgba(59, 130, 246, 0.3)",
-                            transition: "transform 0.2s ease"
+                            gap: "12px",
+                            boxShadow: "0 15px 30px rgba(59, 130, 246, 0.4)",
+                            transition: "all 0.3s ease",
+                            animation: "fadeIn 0.5s ease-out"
                         }}
                     >
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                         İndir (PNG)
                     </button>
                 </div>
